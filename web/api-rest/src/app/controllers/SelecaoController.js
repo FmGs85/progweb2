@@ -1,7 +1,9 @@
 import conexao from "../database/index.js"
+import SelecaoRepository from "../repositories/SelecaoRepository.js"
 
 class SelecaoController {
 
+    // função helper
     async executarQuery(sql, valores = []) {
         try {
             const [rows] = await conexao.query(sql, valores)
@@ -14,16 +16,11 @@ class SelecaoController {
 
     //Listar tudo
     async index(req, res) {
-        const sql = "SELECT * FROM dbselecao.dbcopa"
-        try {
-
-            const resultado = await this.executarQuery(sql)
-            res.status(200).json(resultado)
-
-        } catch (erro) {
-
-            res.status(500).json({ erro: "Erro ao buscar seleções" })
-
+        try{
+        const row = await SelecaoRepository.findAll();
+        res.status(200).json(row)
+        } catch(erro){
+            res.status(500).json({erro:"Erro ao encontrar seleção"})
         }
 
     }

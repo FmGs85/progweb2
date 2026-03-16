@@ -30,6 +30,28 @@ class SelecaoRepository {
 
     }
 
+    async findByGrupo(grupo) {
+    const sql = "SELECT * FROM selecoes WHERE grupo = ?"
+    try {
+        const resultado = await this.executarQuery(sql, [grupo])
+        return resultado
+    } catch (erro) {
+        throw new Error(erro)
+    }
+}
+
+async findByNome(nome) {
+    const sql = "SELECT * FROM selecoes WHERE selecao LIKE ?"
+    try {
+        // O % significa "qualquer coisa antes ou depois"
+        // Ex: %bra% encontra "Brasil"
+        const resultado = await this.executarQuery(sql, [`%${nome}%`])
+        return resultado
+    } catch (erro) {
+        throw new Error(erro)
+    }
+}
+
 }
 
 export default new SelecaoRepository()
