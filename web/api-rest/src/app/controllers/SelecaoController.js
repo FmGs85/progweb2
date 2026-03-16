@@ -88,6 +88,32 @@ class SelecaoController {
         }
     }
 
+// Métodos Extras!!    
+     async showByGrupo(req, res) {
+        const grupo = req.params.grupo
+        try {
+            const resultado = await SelecaoRepository.findByGrupo(grupo)
+            res.status(200).json(resultado)
+        } catch (erro) {
+            console.log(erro)
+            res.status(500).json({ erro: "Erro ao buscar seleções por grupo" })
+        }
+    }
+
+    async showByNome(req, res) {
+        const nome = req.query.nome
+        try {
+            const resultado = await SelecaoRepository.findByNome(nome)
+            res.status(200).json(resultado)
+        } catch (erro) {
+            console.log(erro)
+            res.status(500).json({ erro: "Erro ao buscar seleção por nome" })
+        }
+    }
 }
+
+
+
+
 // Padrão singleton
 export default new SelecaoController()

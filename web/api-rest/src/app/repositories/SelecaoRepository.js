@@ -29,7 +29,7 @@ class SelecaoRepository {
 
 
     }
-
+// Métodos Extras!!
     async findByGrupo(grupo) {
     const sql = "SELECT * FROM selecoes WHERE grupo = ?"
     try {
