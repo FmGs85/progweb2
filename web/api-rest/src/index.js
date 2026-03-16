@@ -53,6 +53,9 @@ async function executarQuery(sql, valores = []) {
     }
 }
 
+
+
+
 // function findByIndex(index) {
 //     return selecoes.find(selecao => selecao.id == index)
 // }
@@ -92,6 +95,10 @@ app.get('/selecoes', (req,res) => SelecaoController.index(req,res))
 // })
 
 
+
+// Rotas novas para os métodos extras
+app.get('/selecoes/grupo/:grupo', (req, res) => SelecaoController.showByGrupo(req, res))
+app.get('/selecoes/busca', (req, res) => SelecaoController.showByNome(req, res))
 
 
 app.get('/selecoes/:id', (req,res) => SelecaoController.show(req,res))
