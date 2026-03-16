@@ -29,7 +29,7 @@ class SelecaoController {
     async show(req, res) {
 
         const id = req.params.id
-        const sql = "SELECT * FROM dbselecao.dbcopa WHERE id=?"
+        const sql = "SELECT * FROM selecoes WHERE id=?"
 
         try {
             const resultado = await this.executarQuery(sql, [id])
@@ -44,7 +44,7 @@ class SelecaoController {
     // Criar dados
     async store(req, res) {
         const params = req.body
-        const sql = "INSERT INTO dbselecao.dbcopa SET ?;"
+        const sql = "INSERT INTO selecoes SET ?;"
 
         try {
             const resultado = await this.executarQuery(sql, [params])
@@ -62,7 +62,7 @@ class SelecaoController {
     async update(req, res) {
         const id = req.params.id
         const params = req.body
-        const sql = "UPDATE dbselecao.dbcopa SET ? WHERE id = ?;"
+        const sql = "UPDATE selecoes SET ? WHERE id = ?;"
         try {
             const resultado = await this.executarQuery(sql, [params, id])
             res.status(201).json(resultado)
@@ -78,7 +78,7 @@ class SelecaoController {
     // Deletar dados
     async delete(req, res) {
         const id = req.params.id
-        const sql = "DELETE FROM dbselecao.dbcopa WHERE id=?"
+        const sql = "DELETE FROM selecoes WHERE id=?"
         try {
             const resultado = await this.executarQuery(sql, [id])
             res.status(201).json(resultado)

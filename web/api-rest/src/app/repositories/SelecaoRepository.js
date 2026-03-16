@@ -14,7 +14,7 @@ class SelecaoRepository {
     }
 
     async findAll() {
-        const sql = "SELECT * FROM dbselecao.dbcopa"
+        const sql = "SELECT * FROM selecoes"
 
         try {
 
